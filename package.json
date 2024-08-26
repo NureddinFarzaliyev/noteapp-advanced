@@ -1,0 +1,13 @@
+{
+  "name": "advanced-noteapp",
+  "version": "1.0.0",
+  "description": "This app will be an advanced note taking app which uses File-Explorer-Like folder structure to save your notes.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "nodemon api/server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
