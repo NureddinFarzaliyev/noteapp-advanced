@@ -34,9 +34,8 @@
 **/api/create/folder**
 ```js
 {
-    "name": "testfolder2",
-    "parentId" : "66cdb7b377811fc2ff859c26",
-    "ownerId" : "66cdb7b377811fc2ff859c24"
+  "name": "testfolder2",
+  "parentId" : "66cdb7b377811fc2ff859c26",
 }
 ```
 
@@ -44,9 +43,26 @@
 **/api/create/note**
 ```js
 {
-    "name": "testnote",
-    "parentId" : "66cdb7b377811fc2ff859c26",
-    "ownerId" : "66cdb7b377811fc2ff859c24",
-    "content" : "Hello! This is a markdown note!"
+  "name": "testnote",
+  "parentId" : "66cdb7b377811fc2ff859c26",
+  "content" : "Hello! This is a markdown note!"
+}
+```
+
+## Deleting Folders & Notes
+
+### Deleting a Folder
+**/api/delete/folder**
+```js
+{
+  "id": "66cdc81320cc51f2edfc8aa4"
+}
+```
+
+### Deleting a Note
+**/api/delete/note**
+```js
+{
+  "id": "66cdc81320cc51f2edfc8aa4"
 }
 ```

@@ -7,8 +7,6 @@ import Folder from '../models/FolderSchema.js'
 
 export const signupController = async (req, res) => {
     try{
-        
-        // Create new user
         const existingUser = await User.findOne({username: req.body.username})
         if(existingUser) throw new Error("User already exists")
 
@@ -20,20 +18,15 @@ export const signupController = async (req, res) => {
             password: hashedPassword,
             token: localToken,
         })
-
         const rootFolder = new Folder({
             name: "root",
             ownerId: newUser._id,
         })
-
         
         generateTokenAndSetCookie(newUser._id, res)
 
-        await rootFolder.save()
-        await newUser.save()
-
+        await Promise.all([rootFolder.save(), newUser.save()])
         await User.updateOne({_id: newUser._id}, {$set: {rootId: newUser._id}})
-        // res.json({success: true, id: newUser._id, token: localToken})
         res.json(newUser)
     }
     catch(err){
