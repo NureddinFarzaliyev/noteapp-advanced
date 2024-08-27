@@ -2,8 +2,8 @@ POST http://localhost:3000/api/auth/signup
 Content-Type: application/json
 
 {
-    "username": "test",
-    "password": "test"
+    "username": "test1",
+    "password": "test1"
 }
 
 ####
@@ -12,8 +12,8 @@ POST http://localhost:3000/api/auth/login
 Content-Type: application/json
 
 {
-    "username": "test",
-    "password": "test"
+    "username": "test1",
+    "password": "test1"
 }
 
 #####

@@ -1,0 +1,8 @@
+POST http://localhost:3000/api/create/folder
+Content-Type: application/json
+
+{
+    "name": "test1",
+    "parentId": "test1",
+    "ownerId": ""
+}

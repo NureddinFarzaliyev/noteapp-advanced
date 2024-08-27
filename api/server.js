@@ -2,9 +2,11 @@ import express from 'express'
 const app = express()
 import cookieParser from 'cookie-parser'
 import connectDB from './db/connect.js'
+import protectRoute from './middlewares/protectRoute.js'
 
 // Route imports
 import authRoutes from './routes/auth.routes.js'
+import createRoutes from './routes/create.routes.js'
 
 // Dotenv config
 import dotenv from 'dotenv'
@@ -17,6 +19,7 @@ app.use(cookieParser())
 
 // Routes
 app.use('/api/auth', authRoutes)
+app.use('/api/create', protectRoute, createRoutes)
 
 app.get('/', (req, res) => res.send('Hello World!'))
 

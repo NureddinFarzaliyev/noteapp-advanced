@@ -36,6 +36,10 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    rootId: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: false
+    },
     preferences: {
         type: preferencesSchema,
         required: false,

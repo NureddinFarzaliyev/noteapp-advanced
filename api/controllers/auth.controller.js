@@ -2,10 +2,13 @@ import bcrypt from 'bcryptjs'
 import generateTokenAndSetCookie from "../utils/generateToken.js"
 import genereateLocalToken from "../utils/generateLocalToken.js"
 import User from '../models/UserSchema.js'
+import Folder from '../models/FolderSchema.js'
 
 
 export const signupController = async (req, res) => {
     try{
+        
+        // Create new user
         const existingUser = await User.findOne({username: req.body.username})
         if(existingUser) throw new Error("User already exists")
 
@@ -15,12 +18,23 @@ export const signupController = async (req, res) => {
         const newUser = new User({
             username: req.body.username,
             password: hashedPassword,
-            token: localToken
+            token: localToken,
         })
+
+        const rootFolder = new Folder({
+            name: "root",
+            ownerId: newUser._id,
+        })
+
         
         generateTokenAndSetCookie(newUser._id, res)
+
+        await rootFolder.save()
         await newUser.save()
-        res.json({success: true, id: newUser._id, token: localToken})
+
+        await User.updateOne({_id: newUser._id}, {$set: {rootId: newUser._id}})
+        // res.json({success: true, id: newUser._id, token: localToken})
+        res.json(newUser)
     }
     catch(err){
         res.json({error: err.message})
