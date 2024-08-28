@@ -1,6 +1,8 @@
 import Folder from '../models/FolderSchema.js'
 import Note from '../models/NoteSchema.js'  
 
+// TODO: ADD ERROR HANDLERS 
+
 export const updateFolderNameController = async (req, res) => {
     await Folder.updateOne({_id: req.body.id}, {$set: {name: req.body.newName}})
     res.json({success: true, message: `Folder name changed to ${req.body.newName}`})

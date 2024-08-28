@@ -115,3 +115,21 @@
   "content": "new and updated fresh note content"
 }
 ```
+
+## Fetch Note or Folder Data
+
+### Get Note Content
+**/api/get/note**
+```js
+{
+  "id": "66cf07d3bb574470348daf10"
+}
+```
+
+### Get Children of Folder
+**/api/get/children**
+```js
+{
+  "id": "66cdc81320cc51f2edfc8aa4"
+}
+```
