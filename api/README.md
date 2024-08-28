@@ -28,6 +28,26 @@
 }
 ```
 
+## Changing User Data
+
+### Changing Username
+**/api/update/username**
+```js
+{
+  "newUsername": "newusername",
+  "password": "test"
+}
+```
+
+### Changing Password
+**/api/update/password**
+```js
+{
+  "newPassword": "test",
+  "password": "test"
+}
+```
+
 ## Creating Folders & Notes
 
 ### Creating a Folder
@@ -64,5 +84,34 @@
 ```js
 {
   "id": "66cdc81320cc51f2edfc8aa4"
+}
+```
+
+## Updating Folders & Notes
+
+### Updating Folder Name
+**/api/update/name/folder**
+```js
+{
+  "id": "66cdcb62bf9b583459b9de5c",
+  "newName": "newname"
+}
+```
+
+### Updating Note Name
+**/api/update/name/note**
+```js
+{
+  "id": "66cdcb62bf9b583459b9de5c",
+  "newName": "newname"
+}
+```
+
+### Updating Note Content
+**/api/update/note**
+```js
+{
+  "id": "66cdcc484d821a1d57966c9a",
+  "content": "new and updated fresh note content"
 }
 ```
