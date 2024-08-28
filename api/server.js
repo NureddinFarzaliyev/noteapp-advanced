@@ -8,6 +8,7 @@ import protectRoute from './middlewares/protectRoute.js'
 import authRoutes from './routes/auth.routes.js'
 import createRoutes from './routes/create.routes.js'
 import deleteRoutes from './routes/delete.routes.js'
+import updateRoutes from './routes/update.routes.js'
 
 // Dotenv config
 import dotenv from 'dotenv'
@@ -22,6 +23,7 @@ app.use(cookieParser())
 app.use('/api/auth', authRoutes)
 app.use('/api/create', protectRoute, createRoutes)
 app.use('/api/delete', protectRoute, deleteRoutes)
+app.use('/api/update', protectRoute, updateRoutes)
 
 app.get('/', (req, res) => res.send('Hello World!'))
 

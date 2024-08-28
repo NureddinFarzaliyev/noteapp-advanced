@@ -27,7 +27,7 @@ export const signupController = async (req, res) => {
 
         await Promise.all([rootFolder.save(), newUser.save()])
         await User.updateOne({_id: newUser._id}, {$set: {rootId: newUser._id}})
-        res.json(newUser)
+        res.json({success: true, id: newUser._id, token: localToken, message: "Signed up successfully"})
     }
     catch(err){
         res.json({error: err.message})
@@ -46,7 +46,7 @@ export const loginController = async (req, res) => {
         const localToken = genereateLocalToken()
 
         await User.updateOne({username: req.body.username}, { $set: { token: localToken } } )
-        res.json({success: true, id: user._id, token: localToken})
+        res.json({success: true, id: user._id, token: localToken, message: "Logged in successfully"})
     } catch (error) {
         res.json({error: error.message})
     }
@@ -56,7 +56,7 @@ export const logoutController = async (req, res) => {
     try{
         res.cookie("jwt", "", {maxAge: 0})
         await User.updateOne({_id: req.body.id}, {$set : {token: ""}})
-        res.json({success: true})
+        res.json({success: true, message: "Logged out sucessfully"})
     }catch(err){
         res.json({error: err.message})
     }
