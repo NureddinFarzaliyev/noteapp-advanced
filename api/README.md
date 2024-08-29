@@ -48,6 +48,20 @@
 }
 ```
 
+### Updating User Preferences
+**/api/update/preferences**
+```js
+{
+  "preferences": {
+    "theme": "custom",
+    "backgroundColor": "red",
+    "accentColor": "green",
+    "textColor": "blue",
+    "textSize": 69
+  }
+}
+```
+
 ## Creating Folders & Notes
 
 ### Creating a Folder
