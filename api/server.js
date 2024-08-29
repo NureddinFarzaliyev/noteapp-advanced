@@ -10,6 +10,7 @@ import createRoutes from './routes/create.routes.js'
 import deleteRoutes from './routes/delete.routes.js'
 import updateRoutes from './routes/update.routes.js'
 import getRoutes from './routes/get.routes.js'
+import searchRoutes from './routes/search.routes.js'
 
 // Dotenv config
 import dotenv from 'dotenv'
@@ -26,6 +27,7 @@ app.use('/api/create', protectRoute, createRoutes)
 app.use('/api/delete', protectRoute, deleteRoutes)
 app.use('/api/update', protectRoute, updateRoutes)
 app.use('/api/get', protectRoute, getRoutes)
+app.use('/api/search', protectRoute, searchRoutes)
 
 app.get('/', (req, res) => res.send('Hello World!'))
 

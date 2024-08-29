@@ -1,5 +1,14 @@
 # 🚧 Advanced Notetaking App - REST API Documentation
 
+### CONTENT:
+- [👤 User Authentication](https://github.com/NureddinFarzaliyev/noteapp-advanced/tree/master/api#user-authentication)
+- [👤 Changing User Data](https://github.com/NureddinFarzaliyev/noteapp-advanced/tree/master/api#changing-user-data)
+- [📂 Creating Folders & Notes](https://github.com/NureddinFarzaliyev/noteapp-advanced/tree/master/api#creating-folders--notes)
+- [📂 Deleting Folders & Notes](https://github.com/NureddinFarzaliyev/noteapp-advanced/tree/master/api#deleting-folders--notes)
+- [📂 Updating Folders & Notes](https://github.com/NureddinFarzaliyev/noteapp-advanced/tree/master/api#updating-folders--notes)
+- [📂 Fetch Note or Folder Data](https://github.com/NureddinFarzaliyev/noteapp-advanced/tree/master/api#fetch-note-or-folder-data)
+- [🔎 Search for Notes and Folders](https://github.com/NureddinFarzaliyev/noteapp-advanced/tree/master/api#search-for-folders-and-notes)
+
 ## User Authentication
 
 ### Signup
@@ -145,5 +154,15 @@
 ```js
 {
   "id": "66cdc81320cc51f2edfc8aa4"
+}
+```
+
+## Search for Folders and Notes
+
+### Search by query
+**/api/search**
+```js
+{
+  "query": "ad"
 }
 ```
