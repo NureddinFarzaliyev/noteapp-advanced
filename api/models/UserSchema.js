@@ -16,6 +16,11 @@ const preferencesSchema = new mongoose.Schema({
         required: false,
         default: null
     },
+    textColor: {
+        type: String,
+        required: false,
+        default: null
+    },
     textSize: {
         type: Number,
         required: false,
