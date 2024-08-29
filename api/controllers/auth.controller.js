@@ -55,9 +55,24 @@ export const loginController = async (req, res) => {
 export const logoutController = async (req, res) => {
     try{
         res.cookie("jwt", "", {maxAge: 0})
-        await User.updateOne({_id: req.body.id}, {$set : {token: ""}})
         res.json({success: true, message: "Logged out sucessfully"})
     }catch(err){
         res.json({error: err.message})
+    }
+}
+
+export const checkAuthController = async (req, res) => {
+    try {
+        const user = await User.findById({_id: req.body.id})
+        if(!user) res.json({error: "user not found"})
+        
+        if(user.token == req.body.token){
+            res.json({success: true, message: "Authenticated successfully"})
+        }else{
+            res.json({success: false, message: "Authentication failed"})
+        }
+    } catch (error) {
+        console.log(error)
+        res.json({error: error.message})
     }
 }
