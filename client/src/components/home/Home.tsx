@@ -1,22 +1,24 @@
 import Login from '../auth/Login'
 import Signup from '../auth/Signup'
-import Logout from '../auth/Logout'
 import { isLoggedInContext } from '../../contexts/isLoggedInContext'
 import { useContext } from 'react'
+import Settings from '../settings/Settings'
 
 function Home() {
     const isLoggedIn = useContext(isLoggedInContext)
 
     if(isLoggedIn === true){
         return(
-            <Logout />
+            <>
+                <Settings />
+            </>
         )
     }else{
         return (
-            <div>
+            <>
                 <Login />
                 <Signup />
-            </div>
+            </>
         )
     }
 

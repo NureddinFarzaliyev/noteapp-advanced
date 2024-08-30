@@ -3,6 +3,7 @@
 ### CONTENT:
 - [👤 User Authentication](https://github.com/NureddinFarzaliyev/noteapp-advanced/tree/master/api#user-authentication)
 - [👤 Changing User Data](https://github.com/NureddinFarzaliyev/noteapp-advanced/tree/master/api#changing-user-data)
+- [👤 Fetching User Data](https://github.com/NureddinFarzaliyev/noteapp-advanced/tree/master/api#fetching-user-data)
 - [📂 Creating Folders & Notes](https://github.com/NureddinFarzaliyev/noteapp-advanced/tree/master/api#creating-folders--notes)
 - [📂 Deleting Folders & Notes](https://github.com/NureddinFarzaliyev/noteapp-advanced/tree/master/api#deleting-folders--notes)
 - [📂 Updating Folders & Notes](https://github.com/NureddinFarzaliyev/noteapp-advanced/tree/master/api#updating-folders--notes)
@@ -68,6 +69,15 @@
     "textColor": "blue",
     "textSize": 69
   }
+}
+```
+## Fetching User Data
+
+### Fetch User Data
+**/api/auth/userdata**
+```js
+{
+  "id": "66cdb7b377811fc2ff859c26"
 }
 ```
 

@@ -76,3 +76,16 @@ export const checkAuthController = async (req, res) => {
         res.json({error: error.message})
     }
 }
+
+export const getUserData = async (req, res) => {
+    try {
+        const user = await User.findById(req.body.id)
+        if(user){
+            res.json({success: true, user: user})
+        }else{
+            throw new Error("User not found")
+        }
+    } catch (error) {
+        res.json({error: error})
+    }
+}

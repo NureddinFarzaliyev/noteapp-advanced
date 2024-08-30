@@ -4,9 +4,9 @@ import { setLocalStorage } from "../utils/setLocalStorage"
 import { errorToast } from "../utils/toasts"
 
 interface dataType {
-    username: string,
-    password: string,
-    confirm: string
+    username?: string,
+    password?: string,
+    confirm?: string
 }
 
 export const useSignup = (data:dataType) => {

@@ -1,21 +1,9 @@
-import { useState } from "react"
 import { useSignup } from "../../hooks/useSignup"
+import { useHandleChange } from "../../hooks/useHandleChange"
 
 function Signup() {
-    const [registerData, setRegisterData] = useState({
-        username: '',
-        password: '',
-        confirm: ''
-    })
-
-    const {signup, isLoading} = useSignup(registerData)
-
-    const handleChange = (e:React.ChangeEvent<HTMLInputElement>) => {
-        setRegisterData({
-            ...registerData,
-            [e.target.name]: e.target.value
-        })
-    }
+    const {changeData, handleChange} = useHandleChange()
+    const {signup, isLoading} = useSignup(changeData)
 
     return (
         <div>
