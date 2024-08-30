@@ -4,13 +4,12 @@ import { successToast } from "../utils/toasts"
 
 
 export const useAuth = () => {
-    const [isLoading, setIsLoading] = useState(false)
+    const [isLoading, setIsLoading] = useState(true)
     const [isLoggedIn, setIsLoggedIn] = useState(false)
 
     const auth = async () => {
         try {
             setIsLoading(true)
-            
             if(localStorage.getItem("noteapp-id") && localStorage.getItem('noteapp-token')){
                 const result = await sendPostRequest('/auth/check', {
                     id: localStorage.getItem("noteapp-id"),
