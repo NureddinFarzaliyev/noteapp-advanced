@@ -1,33 +1,46 @@
-import { useContext, useState } from "react"
-import { PreferencesDispatchContext } from "../../contexts/PreferencesContext"
+import { useState, useContext } from "react"
 import { ThemeTypes } from "../../contexts/PreferencesContext";
+import { PreferencesContext } from "../../contexts/PreferencesContext";
+import { usePreferences } from "../../hooks/usePreferences";
 
 interface PreferencesType {
     theme: ThemeTypes ;
-    accentColor: string;
-    backgroundColor: string;
-    textColor: string;
-    textSize: number;
+    accentColor?: string;
+    backgroundColor?: string;
+    textColor?: string;
+    textSize?: number;
 }
 
 function Preferences() {
-    const preferencesDispatch = useContext(PreferencesDispatchContext)
-    
     const [theme, setTheme] = useState<ThemeTypes>('dark')
+
+    const preferencesContext = useContext(PreferencesContext)
+    const {updatePreferencesOnServer, isLoading, isChanged} = usePreferences()
+
     const [preferences, setPreferences] = useState<PreferencesType>({
-        theme: theme,
-        accentColor: 'red',
-        backgroundColor: 'green',
-        textColor: 'blue',
+        theme: "custom",
+        accentColor: 'do',
+        backgroundColor: 're',
+        textColor: 'mi',
         textSize: 12
     })
 
-    const applyHandler = async () => {
-        preferencesDispatch({type: theme, payload: preferences})  // TODO: preferences state is gonna be sent through this payload
-    }
+    const saveHandler = async () => {
+        let body:PreferencesType
 
-    // TODO: UPLOAD CHANGES TO SERVER 
-    // TODO: GET THEME DATA FROM SERVER
+        if(theme !== 'custom'){
+            body = {
+                theme: theme == 'dark' ? 'dark' : 'light',
+                backgroundColor: theme == 'dark' ? "#000" : "#fff",
+                accentColor: theme == 'dark' ? "#fff" : "#000",
+                textColor: theme == 'dark' ? '#fff' : "#000",
+            }
+        }else{
+            body = preferences
+        }
+
+        updatePreferencesOnServer(body)
+    }
 
     // TODO: INPUTS ENABLED WHEN CUSTOM IS CHOSEN
     // TODO: INPUTS CHANGE DATA IN USESTATE
@@ -44,7 +57,12 @@ function Preferences() {
 
             <i>Choose "Custom" to customize further.</i> <br />
 
-            <button onClick={() => {applyHandler()}}>Apply Changes</button>
+            <button onClick={() => {saveHandler()}}>{isLoading == true ? 'Please wait...' : 'Save Changes'}</button>
+            <button onClick={() => {location.reload()}} disabled={!isChanged}>Apply</button>
+
+            <br /> <br /> <br />
+            <h1>===Current Preferences===</h1>
+            <pre>{JSON.stringify(preferencesContext, null, 2)}</pre>
         </div>
     )
 }

@@ -1,22 +1,28 @@
 import { sendPostRequest } from "../utils/sendPostRequest"
 import { PreferencesType } from "../contexts/PreferencesContext"
+import { successToast, errorToast } from "../utils/toasts"
+import { useState } from "react"
 
 export const usePreferences = () => {
 
-    const updatePreferencesOnServer = async (preferences: PreferencesType | undefined) => {
+    const [isLoading, setIsLoading] = useState(false)
+    const [isChanged, setIsChanged] = useState(false)
 
+    const updatePreferencesOnServer = async (body: PreferencesType | undefined) => {
+        setIsLoading(true)
         try {
-            console.log('SENDING: ', {preferences: preferences})
-            const result = await sendPostRequest('/update/preferences', {preferences: preferences})
-            console.log(result)
-        } catch (error) {
-            console.log(error)
+            const result = await sendPostRequest('/update/preferences', {preferences: body})
+            if(result.success){
+                successToast("Changes saved. Please refresh or click 'Apply' to apply them.")
+            }else if(result.error){
+                throw new Error(result.error)
+            }
+        } catch (error: any) {
+            errorToast(error)            
         }
-
-
+        setIsLoading(false)
+        setIsChanged(true)
     }
 
-
-
-    return {updatePreferencesOnServer}
+    return {updatePreferencesOnServer, isLoading, isChanged}
 }
