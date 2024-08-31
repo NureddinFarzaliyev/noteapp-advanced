@@ -1,4 +1,6 @@
-# 🚧 Advanced Notetaking App - REST API Documentation
+# Advanced Notetaking App - REST API Documentation
+
+This REST API is created using Node.js & Express. API Communicates with MongoDB and uses CRUD operations. API also uses JWT for protecting some of its routes.
 
 ### CONTENT:
 - [👤 User Authentication](https://github.com/NureddinFarzaliyev/noteapp-advanced/tree/master/api#user-authentication)

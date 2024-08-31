@@ -1,14 +1,16 @@
-import { useState, useContext } from "react"
-import { ThemeTypes } from "../../contexts/PreferencesContext";
+import { useState, useContext, useEffect } from "react"
+import { PreferencesType, ThemeTypes } from "../../contexts/PreferencesContext";
 import { PreferencesContext } from "../../contexts/PreferencesContext";
 import { usePreferences } from "../../hooks/usePreferences";
+import Customize from "./Customize";
 
-interface PreferencesType {
-    theme: ThemeTypes ;
+export interface PreferencesPageType {
+    theme: ThemeTypes;
     accentColor?: string;
     backgroundColor?: string;
     textColor?: string;
     textSize?: number;
+    [key: string]: string | undefined | number;
 }
 
 function Preferences() {
@@ -17,33 +19,40 @@ function Preferences() {
     const preferencesContext = useContext(PreferencesContext)
     const {updatePreferencesOnServer, isLoading, isChanged} = usePreferences()
 
-    const [preferences, setPreferences] = useState<PreferencesType>({
+    const [preferences, setPreferences] = useState<PreferencesPageType>({
         theme: "custom",
-        accentColor: 'do',
-        backgroundColor: 're',
-        textColor: 'mi',
-        textSize: 12
+        accentColor: undefined,
+        backgroundColor: undefined,
+        textColor: undefined,
+        textSize: undefined
     })
 
-    const saveHandler = async () => {
-        let body:PreferencesType
+    useEffect(() => {
+        setPreferences({
+            theme: "custom",
+            accentColor: preferencesContext?.accentColor,
+            backgroundColor: preferencesContext?.backgroundColor,
+            textColor: preferencesContext?.textColor,
+            textSize: preferencesContext?.textSize
+        })
+    }, [preferencesContext])
 
+    const saveHandler = async () => {
         if(theme !== 'custom'){
-            body = {
+            let body:PreferencesType = {
                 theme: theme == 'dark' ? 'dark' : 'light',
-                backgroundColor: theme == 'dark' ? "#000" : "#fff",
-                accentColor: theme == 'dark' ? "#fff" : "#000",
-                textColor: theme == 'dark' ? '#fff' : "#000",
+                backgroundColor: theme == 'dark' ? "#000000" : "#ffffff",
+                accentColor: theme == 'dark' ? "#ffffff" : "#000000",
+                textColor: theme == 'dark' ? '#ffffff' : "#000000",
+                textSize: preferences.textSize
             }
+            updatePreferencesOnServer(body)
         }else{
-            body = preferences
+            console.log(preferences)
+            updatePreferencesOnServer(preferences)
         }
 
-        updatePreferencesOnServer(body)
     }
-
-    // TODO: INPUTS ENABLED WHEN CUSTOM IS CHOSEN
-    // TODO: INPUTS CHANGE DATA IN USESTATE
 
     return (
         <div className='border-2 p-2'>
@@ -57,12 +66,12 @@ function Preferences() {
 
             <i>Choose "Custom" to customize further.</i> <br />
 
+            <Customize isDisabled={theme !== 'custom'} setPreferences={setPreferences} preferences={preferences} />
+
             <button onClick={() => {saveHandler()}}>{isLoading == true ? 'Please wait...' : 'Save Changes'}</button>
             <button onClick={() => {location.reload()}} disabled={!isChanged}>Apply</button>
 
-            <br /> <br /> <br />
-            <h1>===Current Preferences===</h1>
-            <pre>{JSON.stringify(preferencesContext, null, 2)}</pre>
+            {/* <pre>{JSON.stringify(preferencesContext, null, 2)}</pre> */}
         </div>
     )
 }
