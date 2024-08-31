@@ -4,7 +4,7 @@ import { Toaster } from "react-hot-toast"
 import { useAuth } from "./hooks/useAuth"
 import { useEffect  } from "react"
 import { isLoggedInContext } from "./contexts/isLoggedInContext"
-import ThemeContextProvider from "./contexts/ThemeContext"
+import PreferencesContextProvider from "./contexts/PreferencesContext"
 
 function App() {
   const {auth, isLoggedIn, isLoading} = useAuth()
@@ -17,7 +17,7 @@ function App() {
       <>
       <Toaster />
       <isLoggedInContext.Provider value={isLoggedIn}>
-      <ThemeContextProvider>
+      <PreferencesContextProvider>
   
         <BrowserRouter>
           <Routes>
@@ -25,7 +25,7 @@ function App() {
           </Routes>
         </BrowserRouter>
         
-      </ThemeContextProvider>
+      </PreferencesContextProvider>
       </isLoggedInContext.Provider>
       </>
     )

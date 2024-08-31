@@ -1,9 +1,9 @@
 import { useContext, useState } from "react"
-import {PreferencesDispatchContext } from "../../contexts/ThemeContext"
-
-type ThemeTypes = 'light' | 'dark' | 'custom'
+import { PreferencesDispatchContext } from "../../contexts/PreferencesContext"
+import { ThemeTypes } from "../../contexts/PreferencesContext";
 
 interface PreferencesType {
+    theme: ThemeTypes ;
     accentColor: string;
     backgroundColor: string;
     textColor: string;
@@ -14,15 +14,16 @@ function Preferences() {
     const preferencesDispatch = useContext(PreferencesDispatchContext)
     
     const [theme, setTheme] = useState<ThemeTypes>('dark')
-    const [preferences, setPreferences] = useState<PreferencesType>()
-    
-    const applyHandler = () => {
-        preferencesDispatch({type: theme, payload: {
-            accentColor: 'red',
-            backgroundColor: 'red',
-            textColor: 'red',
-            textSize: 12
-        }})  // TODO: preferences state is gonna be sent through this payload
+    const [preferences, setPreferences] = useState<PreferencesType>({
+        theme: theme,
+        accentColor: 'red',
+        backgroundColor: 'green',
+        textColor: 'blue',
+        textSize: 12
+    })
+
+    const applyHandler = async () => {
+        preferencesDispatch({type: theme, payload: preferences})  // TODO: preferences state is gonna be sent through this payload
     }
 
     // TODO: UPLOAD CHANGES TO SERVER 
