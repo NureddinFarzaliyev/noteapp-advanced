@@ -26,7 +26,8 @@ function FolderView({changeId, isLoading, folderContent} : FolderViewProps) {
         return (
             <div>
                 {/* <p className="underline">{id}</p> */}
-                <div><button disabled={folderContent.parentId === undefined} onClick={() => changeId(folderContent.parentId)}>Go back</button></div>
+                <button disabled={folderContent.parentId === undefined} onClick={() => changeId(folderContent.parentId)}>Go back</button>
+                <div>{folderContent.folderName}</div>
     
                 <div>
                 {folderContent.folders.map((folder:FolderType, index:number) => {
