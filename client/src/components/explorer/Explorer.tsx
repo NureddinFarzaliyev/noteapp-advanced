@@ -19,10 +19,11 @@ function Explorer() {
     }, [folderId, forceRender])
 
     return (
-        <div>
+        <div className="border-2">
             <p>Explorer</p>
 
             <CreateButtons render={setForceRender} folderId={folderId} />
+
             {isLoading === true ? <p>Loading...</p> : 
             <FolderView id={folderId} 
             changeId={setFolderId} 

@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 interface FolderViewProps {
     id: string;
     changeId: React.Dispatch<React.SetStateAction<string>>;
@@ -28,13 +30,13 @@ function FolderView({changeId, isLoading, folderContent} : FolderViewProps) {
     
                 <div>
                 {folderContent.folders.map((folder:FolderType, index:number) => {
-                    return <div className="m-2 border-2" onClick={() => changeId(folder._id)} key={index}>{folder.name}</div>
+                    return <button className="m-2 border-2" onClick={() => changeId(folder._id)} key={index}>{folder.name}</button>
                 })}
                 </div>
 
                 <div>
                 {folderContent.notes.map((note:NoteType, index:number) => {
-                    return <div className="m-2" key={999-index}>{note.name}</div>
+                    return <Link target="_blank" key={999-index} to={`/edit/${note._id}`}><button className="m-2">{note.name}</button></Link>
                 })}
                 </div>
             </div>
