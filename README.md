@@ -2,4 +2,4 @@
 
 This app will be an advanced note taking app which uses File-Explorer-Like folder structure to save your notes. 
 
-API Documentation: https://github.com/NureddinFarzaliyev/noteapp-advanced/blob/master/api/README.md
+[REST API Documentation](https://github.com/NureddinFarzaliyev/noteapp-advanced/blob/master/api/README.md)
