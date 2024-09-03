@@ -18,7 +18,6 @@ function Editor() {
     }, [noteData])
 
     // TODO: SEPERATE COMPONENTS
-    // TODO: DETAILED NOTE DATA
 
     if(isLoading !== true){
         return (
@@ -27,6 +26,10 @@ function Editor() {
                 <div>
                     <input type="text" placeholder="change name" onChange={(e) => {setNewName(e.target.value); setNoteName(e.target.value)}} />
                     <button disabled={isChangeNameLoading} onClick={() => {changeName('note', typeof id === 'string' ? id : '');}}>change</button>
+                </div>
+                <div>
+                    <p>Created: {noteData?.createdAt}</p>
+                    <p>Last Changed: {noteData?.updatedAt}</p>
                 </div>
                 <textarea name="" id="" value={noteContent} onChange={(e) => setNoteContent(e.target.value)}></textarea>
                 <button disabled={isSaving} onClick={() => {updateNoteContent(id, noteContent)}}>SAVE</button>

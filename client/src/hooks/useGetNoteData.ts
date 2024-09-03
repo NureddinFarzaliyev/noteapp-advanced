@@ -4,6 +4,8 @@ import { sendPostRequest } from "../utils/sendPostRequest"
 interface NoteDataType {
     name: string;
     content: string;
+    createdAt: string;
+    updatedAt: string;
 }
 
 export const useGetNoteData = (id:string|undefined) => {
