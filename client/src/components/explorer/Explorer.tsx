@@ -27,7 +27,7 @@ function Explorer() {
             {isLoading === true ? <p>Loading...</p> : 
             <FolderView id={folderId} 
             changeId={setFolderId} 
-            folderContent={folderContent} 
+            folderContent={{...folderContent, id: folderId}} 
             isLoading={isFolderLoading} />}
         </div>
     )

@@ -1,4 +1,6 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useChangeName } from "../../hooks/useChangeName";
 
 interface FolderViewProps {
     id: string;
@@ -15,7 +17,18 @@ interface NoteType {
     _id: string;
 }
 
+// TODO: CREATE SEPERATE COMPONENTS
+
 function FolderView({changeId, isLoading, folderContent} : FolderViewProps) {
+
+    const {changeName, setNewName, isChangeNameLoading} = useChangeName()
+
+    const [folderName, setFolderName] = useState(folderContent.folderName) 
+    // these 2 will be in seperate component
+    useEffect(() => {
+        setFolderName(folderContent.folderName)
+    }, [folderContent])
+
     if(isLoading === true){
         return (
         <div>
@@ -27,7 +40,12 @@ function FolderView({changeId, isLoading, folderContent} : FolderViewProps) {
             <div>
                 {/* <p className="underline">{id}</p> */}
                 <button disabled={folderContent.parentId === undefined} onClick={() => changeId(folderContent.parentId)}>Go back</button>
-                <div>{folderContent.folderName}</div>
+                <div>{folderName}</div>
+
+                <div>
+                    <input onChange={(e) => {setNewName(e.target.value); setFolderName(e.target.value)}} placeholder="Change folder name" type="text" />
+                    <button disabled={isChangeNameLoading} onClick={() => {changeName('folder', folderContent.id)}}>{isChangeNameLoading ? 'Loading...' : 'Change'}</button>
+                </div>
     
                 <div>
                 {folderContent.folders.map((folder:FolderType, index:number) => {
