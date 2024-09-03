@@ -3,19 +3,21 @@ import { useGetNoteData } from "../../hooks/useGetNoteData.ts"
 import { useEffect, useState } from "react"
 import { useUpdateNote } from "../../hooks/useUpdateNote.ts"
 import { useChangeName } from "../../hooks/useChangeName.ts"
+import Markdown from "./Markdown.tsx"
 
 function Editor() {
     const {id} = useParams()
     const {isLoading, noteData} = useGetNoteData(id)
     const {updateNoteContent, isSaving} = useUpdateNote()
     const {isChangeNameLoading, changeName, setNewName} = useChangeName()
-    const [noteContent, setNoteContent] = useState<string|undefined>('')
+    const [noteContent, setNoteContent] = useState<string>('')
     const [noteName, setNoteName] = useState<string | undefined>()
 
     useEffect(() => {
-        setNoteContent(noteData?.content)
+        setNoteContent(typeof noteData?.content == 'string' ? noteData.content : '')
         setNoteName(noteData?.name)
     }, [noteData])
+
 
     // TODO: SEPERATE COMPONENTS
 
@@ -32,7 +34,11 @@ function Editor() {
                     <p>Last Changed: {noteData?.updatedAt}</p>
                 </div>
                 <textarea name="" id="" value={noteContent} onChange={(e) => setNoteContent(e.target.value)}></textarea>
-                <button disabled={isSaving} onClick={() => {updateNoteContent(id, noteContent)}}>SAVE</button>
+                <button disabled={isSaving || noteData?.content === noteContent} onClick={() => {updateNoteContent(id, noteContent); if(noteData !== undefined) noteData.content = noteContent}}>SAVE</button>
+
+                {noteData?.content !== noteContent && <p>You have unsaved changes! Leaving the page you'll lose your changes.</p>}
+
+                <Markdown noteContent={noteContent} />
             </div>
         )
     }else{

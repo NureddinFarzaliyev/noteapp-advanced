@@ -19,7 +19,7 @@ export const useGetNoteData = (id:string|undefined) => {
             const data = await sendPostRequest('/get/note', {id: id})
 
             if(data.success === true){
-                console.log(data.note)
+                // console.log(data.note)
                 setNoteData(data.note)
             }else if(data.error){
                 setIsLoading(false)
