@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import FolderView from "./FolderView"
+import FolderView from "./FolderView.tsx"
 import { useFetchRootFolderId } from "../../hooks/useFetchRootFolderId.ts"
 import { useFetchFolderContent } from "../../hooks/useFetchFolderContent.ts"
 import CreateButtons from "./CreateButtons.tsx"

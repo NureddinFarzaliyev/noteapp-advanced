@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useChangeName } from "../../hooks/useChangeName";
+import { useDeleteItem } from "../../hooks/useDeleteItem";
 
 interface FolderViewProps {
     id: string;
@@ -22,9 +23,9 @@ interface NoteType {
 function FolderView({changeId, isLoading, folderContent} : FolderViewProps) {
 
     const {changeName, setNewName, isChangeNameLoading} = useChangeName()
-
+    const {deleteItem, isDeleting} = useDeleteItem()
     const [folderName, setFolderName] = useState(folderContent.folderName) 
-    // these 2 will be in seperate component
+
     useEffect(() => {
         setFolderName(folderContent.folderName)
     }, [folderContent])
@@ -42,10 +43,18 @@ function FolderView({changeId, isLoading, folderContent} : FolderViewProps) {
                 <button disabled={folderContent.parentId === undefined} onClick={() => changeId(folderContent.parentId)}>Go back</button>
                 <div>{folderName}</div>
 
+                {folderName !== undefined ? ( 
+                <>
                 <div>
                     <input onChange={(e) => {setNewName(e.target.value); setFolderName(e.target.value)}} placeholder="Change folder name" type="text" />
                     <button disabled={isChangeNameLoading} onClick={() => {changeName('folder', folderContent.id)}}>{isChangeNameLoading ? 'Loading...' : 'Change'}</button>
                 </div>
+                <div>
+                    <button disabled={isDeleting} onClick={() => {deleteItem('folder', folderContent.id)}}>DELETE FOLDER</button>
+                </div>
+                </>
+                 ) : null}
+
     
                 <div>
                 {folderContent.folders.map((folder:FolderType, index:number) => {

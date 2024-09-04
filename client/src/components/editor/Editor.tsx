@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 import { useUpdateNote } from "../../hooks/useUpdateNote.ts"
 import { useChangeName } from "../../hooks/useChangeName.ts"
 import Markdown from "./Markdown.tsx"
+import { useDeleteItem } from "../../hooks/useDeleteItem.ts"
 
 function Editor() {
     const {id} = useParams()
@@ -12,6 +13,8 @@ function Editor() {
     const {isChangeNameLoading, changeName, setNewName} = useChangeName()
     const [noteContent, setNoteContent] = useState<string>('')
     const [noteName, setNoteName] = useState<string | undefined>()
+    const {deleteItem, isDeleting} = useDeleteItem()
+
 
     useEffect(() => {
         setNoteContent(typeof noteData?.content == 'string' ? noteData.content : '')
@@ -28,6 +31,9 @@ function Editor() {
                 <div>
                     <input type="text" placeholder="change name" onChange={(e) => {setNewName(e.target.value); setNoteName(e.target.value)}} />
                     <button disabled={isChangeNameLoading} onClick={() => {changeName('note', typeof id === 'string' ? id : '');}}>change</button>
+                </div>
+                <div>
+                    <button disabled={isDeleting} onClick={() => {deleteItem("note", id?id:'')}}>DELETE</button>
                 </div>
                 <div>
                     <p>Created: {noteData?.createdAt}</p>

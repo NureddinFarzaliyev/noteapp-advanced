@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { sendPostRequest } from "../utils/sendPostRequest"
+import { useNavigate } from "react-router-dom";
 
 interface NoteDataType {
     name: string;
@@ -9,7 +10,7 @@ interface NoteDataType {
 }
 
 export const useGetNoteData = (id:string|undefined) => {
-    
+    const navigate = useNavigate()
     const [noteData, setNoteData] = useState<NoteDataType>()
     const [isLoading, setIsLoading] = useState(false)
 
@@ -19,7 +20,7 @@ export const useGetNoteData = (id:string|undefined) => {
             const data = await sendPostRequest('/get/note', {id: id})
 
             if(data.success === true){
-                // console.log(data.note)
+                if(data.note === null) navigate('/')
                 setNoteData(data.note)
             }else if(data.error){
                 setIsLoading(false)
@@ -29,7 +30,8 @@ export const useGetNoteData = (id:string|undefined) => {
                 throw new Error('Unexpected error')
             }
         } catch (error) {
-            console.log(error)            
+            console.log(error)
+            navigate('/')
         }
         setIsLoading(false)
     }

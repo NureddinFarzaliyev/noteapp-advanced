@@ -22,6 +22,6 @@ export const getNote = async (req, res) => {
         const note = await Note.findOne({_id: req.body.id, ownerId: req.user._id})
         res.json({success: true, note: note})
     } catch (error) {
-        res.json({error: err.message})
+        res.json({error: error.message})
     }
 }
