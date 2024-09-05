@@ -1,13 +1,13 @@
 import { useDeleteItem } from "../../hooks/useDeleteItem.ts"
 
-function DeleteComponent({id, type} : {id: string; type: 'note' | 'folder'}) {
+function DeleteComponent({id, type, forceRender} : {id: string; type: 'note' | 'folder'; forceRender?: React.Dispatch<React.SetStateAction<number>>}) {
 
-    const {deleteItem, isDeleting} = useDeleteItem()
+    const {deleteItem, isDeleting} = useDeleteItem(forceRender ? false : true)
 
     return (
-        <>
-            <button disabled={isDeleting} onClick={() => {deleteItem(type, id)}}>DELETE</button>
-        </>
+        <div>
+            <button disabled={isDeleting} onClick={() => {deleteItem(type, id); if(forceRender) forceRender(p => p + 1) }}>DELETE</button>
+        </div>
     )
 }
 

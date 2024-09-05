@@ -4,7 +4,7 @@ import { errorToast, successToast } from "../utils/toasts"
 
 type itemType = 'folder' | 'note' 
 
-export const useDeleteItem = () => {
+export const useDeleteItem = (reload?:boolean) => {
 
     const [isDeleting, setIsDeleting] = useState(false)
 
@@ -15,7 +15,7 @@ export const useDeleteItem = () => {
                 const result = await sendPostRequest(`/delete/${type}`, {id: id})
                 if(result.success){
                     successToast(result.message)
-                    location.reload()
+                    if(reload !== false) location.reload()
                 }else if(result.error){
                     throw new Error(result.error);
                 }else{

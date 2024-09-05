@@ -35,7 +35,7 @@ function Explorer() {
             isLoading={isFolderLoading}
             setInfoData={setInfoData} />}
 
-            <InfoView data={infoData} setSelfData={setInfoData} />
+            <InfoView data={infoData} setSelfData={setInfoData} render={setForceRender} />
         </div>
     )
 }
