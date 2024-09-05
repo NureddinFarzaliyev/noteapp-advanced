@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { useChangeName } from "../../hooks/useChangeName";
-import { useDeleteItem } from "../../hooks/useDeleteItem";
 import { useNavigate } from "react-router-dom";
 import { InfoDataType } from "./InfoView";
+import NameComponent from "./NameComponent";
+import DeleteComponent from "./DeleteComponent";
 
 interface FolderViewProps {
     id: string;
@@ -11,20 +11,9 @@ interface FolderViewProps {
     folderContent: any;
     setInfoData: React.Dispatch<React.SetStateAction<InfoDataType | undefined>>;
 }
-// interface FolderType {
-//     name: string;
-//     _id: string;
-// }
-// interface NoteType {
-//     name: string;
-//     _id: string;
-// }
 
 // TODO: CREATE SEPERATE COMPONENTS
-
 function FolderView({changeId, isLoading, folderContent, setInfoData} : FolderViewProps) {
-    const {changeName, setNewName, isChangeNameLoading} = useChangeName()
-    const {deleteItem, isDeleting} = useDeleteItem()
     const [folderName, setFolderName] = useState(folderContent.folderName) 
     const navigate = useNavigate()
 
@@ -47,15 +36,10 @@ function FolderView({changeId, isLoading, folderContent, setInfoData} : FolderVi
 
                 {folderName !== undefined ? ( 
                 <>
-                <div>
-                    <input onChange={(e) => {setNewName(e.target.value); setFolderName(e.target.value)}} placeholder="Change folder name" type="text" />
-                    <button disabled={isChangeNameLoading} onClick={() => {changeName('folder', folderContent.id)}}>{isChangeNameLoading ? 'Loading...' : 'Change'}</button>
-                </div>
-                <div>
-                    <button disabled={isDeleting} onClick={() => {deleteItem('folder', folderContent.id)}}>DELETE FOLDER</button>
-                </div>
+                <NameComponent type="folder" nameSetter={setFolderName} id={folderContent.id} />
+                <DeleteComponent id={folderContent.id} type='folder' />
                 </>
-                 ) : null}
+                ) : null}
 
                 <div>
                 {folderContent.folders.map((folder:InfoDataType, index:number) => {

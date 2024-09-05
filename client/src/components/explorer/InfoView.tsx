@@ -1,4 +1,3 @@
-
 export interface InfoDataType {
     type: 'folder' | 'note';
     name: string;

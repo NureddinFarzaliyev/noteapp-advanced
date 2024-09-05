@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { sendPostRequest } from "../utils/sendPostRequest"
 import { useNavigate } from "react-router-dom";
 
-interface NoteDataType {
+export interface NoteDataType {
     name: string;
     content: string;
     createdAt: string;
