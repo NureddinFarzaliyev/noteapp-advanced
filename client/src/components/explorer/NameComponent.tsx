@@ -1,4 +1,5 @@
 import { useChangeName } from "../../hooks/useChangeName";
+import { useEffect } from "react";
 
 interface NameProps {
     nameSetter?: React.Dispatch<any>;
@@ -9,6 +10,14 @@ interface NameProps {
 
 function NameComponent({nameSetter, id, type, forceRender}: NameProps) {
     const {changeName, setNewName, isChangeNameLoading} = useChangeName()
+
+    useEffect(() => {
+        const handleKeyPress = (e:any) => {
+            if(e.key == 'F2') window.alert('rename')
+        }
+        document.addEventListener('keydown', handleKeyPress)
+        return () => {document.removeEventListener('keydown', handleKeyPress)}
+    }, [id])
 
     return (
         <>
