@@ -5,6 +5,7 @@ import { useFetchFolderContent } from "../../hooks/useFetchFolderContent.ts"
 import CreateButtons from "./CreateButtons.tsx"
 import InfoView from "./InfoView.tsx"
 import { InfoDataType } from "./InfoView.tsx"
+import Search from "./Search.tsx"
 
 function Explorer() {
     const [folderId, setFolderId] = useState('')
@@ -26,6 +27,8 @@ function Explorer() {
             <p>Explorer</p>
 
             <CreateButtons render={setForceRender} folderId={folderId} />
+
+            <Search />
 
             {isLoading === true ? <p>Loading...</p> : 
             <FolderView 

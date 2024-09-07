@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { InfoDataType } from "./InfoView";
 import NameComponent from "./NameComponent";
-import DeleteComponent from "./DeleteComponent";
+// import DeleteComponent from "./DeleteComponent";
 
 interface FolderViewProps {
     id: string;
@@ -37,7 +37,7 @@ function FolderView({changeId, isLoading, folderContent, setInfoData} : FolderVi
                 {folderName !== undefined ? ( 
                 <>
                 <NameComponent type="folder" nameSetter={setFolderName} id={folderContent.id} />
-                <DeleteComponent id={folderContent.id} type='folder' />
+                {/* <DeleteComponent id={folderContent.id} type='folder' /> */}
                 </>
                 ) : null}
 
