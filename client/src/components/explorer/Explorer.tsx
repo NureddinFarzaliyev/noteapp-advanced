@@ -28,7 +28,7 @@ function Explorer() {
 
             <CreateButtons render={setForceRender} folderId={folderId} />
 
-            <Search />
+            <Search changeId={setFolderId} />
 
             {isLoading === true ? <p>Loading...</p> : 
             <FolderView 

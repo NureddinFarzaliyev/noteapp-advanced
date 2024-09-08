@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react"
 import { useSearch } from "../../hooks/useSearch";
+import SearchResults from "./SearchResults";
 
-function Search() {
+function Search({changeId} : {changeId: React.Dispatch<React.SetStateAction<string>>}) {
     const [input, setInput] = useState('')
-    const {search} = useSearch()
+    const {search, results, isSearching} = useSearch()
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -15,11 +16,14 @@ function Search() {
         };
     }, [input])
 
-
     return (
         <div className="border-2 p-2">
             <input type="text" placeholder="Search for files and folders" 
             value={input} onChange={(e) => {setInput(e.target.value)}} />
+            <div>{isSearching === true && 'Searching...'}</div>
+
+            <SearchResults changeId={changeId} results={results} />
+
         </div>
     )
 }
