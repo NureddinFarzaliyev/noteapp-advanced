@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import { useSearch } from "../../hooks/useSearch";
 import SearchResults from "./SearchResults";
+import ReactLoading from 'react-loading'
 
 function Search({changeId} : {changeId: React.Dispatch<React.SetStateAction<string>>}) {
     const [input, setInput] = useState('')
@@ -17,13 +18,12 @@ function Search({changeId} : {changeId: React.Dispatch<React.SetStateAction<stri
     }, [input])
 
     return (
-        <div className="border-2 p-2">
-            <input type="text" placeholder="Search for files and folders" 
+        <div className="relative">
+            <input className="text-black rounded w-96 px-2" type="text" placeholder="Search for files and folders" 
             value={input} onChange={(e) => {setInput(e.target.value)}} />
-            <div>{isSearching === true && 'Searching...'}</div>
+            <div className="absolute top-0 right-0 text-black">{isSearching === true && <ReactLoading type="spin" />}</div>
 
             <SearchResults changeId={changeId} results={results} />
-
         </div>
     )
 }

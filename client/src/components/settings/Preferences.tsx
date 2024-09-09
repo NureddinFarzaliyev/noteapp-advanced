@@ -42,7 +42,7 @@ function Preferences() {
             let body:PreferencesType = {
                 theme: theme == 'dark' ? 'dark' : 'light',
                 backgroundColor: theme == 'dark' ? "#000000" : "#ffffff",
-                accentColor: theme == 'dark' ? "#ffffff" : "#000000",
+                accentColor: "#3498DB",
                 textColor: theme == 'dark' ? '#ffffff' : "#000000",
                 textSize: preferences.textSize
             }
@@ -55,7 +55,7 @@ function Preferences() {
     }
 
     return (
-        <div className='border-2 p-2'>
+        <div className='  p-2'>
             <h1>Preferences</h1>
 
             <select name="theme" id="theme" onChange={(e) => {setTheme(e.target.value as ThemeTypes)}}>

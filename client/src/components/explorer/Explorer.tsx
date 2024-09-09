@@ -23,22 +23,24 @@ function Explorer() {
     }, [folderId, forceRender])
 
     return (
-        <div className="border-2">
-            <p>Explorer</p>
+        <div className="flex w-full px-7 py-2 gap-10">
+            <div className="w-full">
+                <div className="flex gap-2 items-center justify-between w-full mt-5">
+                    <Search changeId={setFolderId} />
+                    <CreateButtons render={setForceRender} folderId={folderId} />
+                </div>
 
-            <CreateButtons render={setForceRender} folderId={folderId} />
-
-            <Search changeId={setFolderId} />
-
-            {isLoading === true ? <p>Loading...</p> : 
-            <FolderView 
-            id={folderId} 
-            changeId={setFolderId} 
-            folderContent={{...folderContent, id: folderId}} 
-            isLoading={isFolderLoading}
-            setInfoData={setInfoData} />}
-
-            <InfoView data={infoData} setSelfData={setInfoData} render={setForceRender} />
+                {isLoading === true ? <p>Loading...</p> : 
+                <FolderView 
+                id={folderId} 
+                changeId={setFolderId} 
+                folderContent={{...folderContent, id: folderId}} 
+                isLoading={isFolderLoading}
+                setInfoData={setInfoData} />}
+            </div>
+            <div>
+                <InfoView data={infoData} setSelfData={setInfoData} render={setForceRender} />
+            </div>
         </div>
     )
 }

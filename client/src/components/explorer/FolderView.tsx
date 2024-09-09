@@ -43,7 +43,7 @@ function FolderView({changeId, isLoading, folderContent, setInfoData} : FolderVi
 
                 <div>
                 {folderContent.folders.map((folder:InfoDataType, index:number) => {
-                    return <button className="m-2 border-2" onClick={() => {setInfoData({...folder, type: 'folder'})}} onDoubleClick={() => changeId(folder._id)} key={index}>{folder.name}</button>
+                    return <button className="m-2  " onClick={() => {setInfoData({...folder, type: 'folder'})}} onDoubleClick={() => changeId(folder._id)} key={index}>{folder.name}</button>
                 })}
                 </div>
 

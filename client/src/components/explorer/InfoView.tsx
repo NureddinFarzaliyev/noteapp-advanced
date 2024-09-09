@@ -17,7 +17,7 @@ interface InfoProps {
 function InfoView({data, setSelfData, render}:InfoProps) {
     if(data){
         return (
-            <div className="border-2 m-2">
+            <div className="  m-2">
                 <h1>Information</h1>
                 <div>{data.name}</div>
                 <div>Created At: {data.createdAt}</div>

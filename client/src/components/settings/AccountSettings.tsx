@@ -15,7 +15,7 @@ function AccountSettings() {
         return <h1>Loading</h1>
     }else{
         return (
-            <div className="border-2 p-2">
+            <div className="  p-2">
                 <h1>Account settings</h1>
                 <Profile username={userData?.username} />
                 <ChangeUsername />
