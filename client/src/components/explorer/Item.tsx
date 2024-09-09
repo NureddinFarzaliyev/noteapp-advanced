@@ -10,7 +10,7 @@ function Item({name, type, isChosen} : {name:string; type: 'folder' | 'note'; is
         onMouseEnter={() => {setIsHovered(true)}}
         onMouseLeave={() => {setIsHovered(false)}}
         style={{backgroundColor: `${isHovered === true && isChosen === false ? 'rgba(52,152,219,.2)' : ''}`,}}>
-            {type === 'folder' ? <CustomFolderSvg/> : <img src={fileIcon} />}
+            {type === 'folder' ? <CustomFolderSvg width={80} height={74} /> : <img src={fileIcon} />}
             <div className='text-sm truncate overflow-hidden whitespace-nowrap w-28'>{name}</div>
         </div>
     )

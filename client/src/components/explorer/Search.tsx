@@ -10,7 +10,7 @@ function Search({changeId} : {changeId: React.Dispatch<React.SetStateAction<stri
     useEffect(() => {
         const timer = setTimeout(() => {
             search(input)
-        }, 750);
+        }, 500);
 
         return () => {
             clearTimeout(timer);
@@ -23,7 +23,7 @@ function Search({changeId} : {changeId: React.Dispatch<React.SetStateAction<stri
             value={input} onChange={(e) => {setInput(e.target.value)}} />
             <div className="absolute top-1 right-1 z-20 text-black">{isSearching === true && <ReactLoading color="black" type="spin" height={24} width={24} />}</div>
 
-            <SearchResults changeId={changeId} results={results} />
+            <SearchResults changeId={changeId} results={results} setInput={setInput} />
         </div>
     )
 }

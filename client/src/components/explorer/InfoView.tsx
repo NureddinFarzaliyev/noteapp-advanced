@@ -21,7 +21,7 @@ function InfoView({data, render}:InfoProps) {
         return (
             <div className="bg-gray-900 p-5 rounded-lg shadow-xl w-[22vw] h-[90vh] m-2 hidden md:block">
                 <div className="flex flex-col items-center justify-center gap-4">
-                    {data.type === 'folder' ? <CustomFolderSvg /> : <img src={noteIcon} alt="note"  />}
+                    {data.type === 'folder' ? <CustomFolderSvg width={80} height={74} /> : <img src={noteIcon} alt="note"  />}
                     <div className="text-2xl">{data.name}</div>
                 </div>
                 <hr className="mt-5 mb-5 opacity-20" />
