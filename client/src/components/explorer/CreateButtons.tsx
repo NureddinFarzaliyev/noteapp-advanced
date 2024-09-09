@@ -17,11 +17,12 @@ function CreateButtons({render, folderId} : ButtonsProps) {
     const [newNoteName, setNewNoteName] = useState('')
 
     return (
-        <div className='flex gap-2'>
+        <div className='flex gap-2 '>
             <ExplorerPopover icon={addFolderIcon}>
+                <p className='mb-2' style={{color: preferences?.textColor}}>Create New Folder</p>
                 <input placeholder='New Folder' className='px-2 rounded' type="text" value={newFolderName} onChange={(e) => {setNewFolderName(e.target.value)}} />
-                <button style={{backgroundColor: preferences?.accentColor}}
-                className="my-2 rounded shadow-lg"
+                <button style={{backgroundColor: preferences?.accentColor, color: preferences?.textColor}}
+                className="mt-2 rounded shadow-lg opacity-70 hover:opacity-100 transition-all"
                 disabled={isLoading} 
                 onClick={() => {createNewFolder(newFolderName !== '' ? newFolderName : 'New Folder', folderId); setNewFolderName('')}}> 
                 Create new folder
@@ -29,9 +30,10 @@ function CreateButtons({render, folderId} : ButtonsProps) {
             </ExplorerPopover>
 
             <ExplorerPopover icon={addNoteIcon}>
+                <p className='mb-2' style={{color: preferences?.textColor}}>Create New Note</p>
                 <input placeholder='New Note' className='px-2 rounded' type="text" value={newNoteName} onChange={(e) => {setNewNoteName(e.target.value)}} />
-                <button style={{backgroundColor: preferences?.accentColor}}
-                className="my-2 rounded shadow-lg"
+                <button style={{backgroundColor: preferences?.accentColor, color: preferences?.textColor}}
+                className="mt-2 rounded shadow-lg opacity-70 hover:opacity-100 transition-all"
                 disabled={isLoading}
                 onClick={() => {createNewNote(newNoteName !== '' ? newNoteName : 'New Note', folderId); setNewNoteName('')}}>
                     Create new file

@@ -24,7 +24,7 @@ function Explorer() {
 
     return (
         <div className="flex w-full px-7 py-2 gap-10">
-            <div className="w-full">
+            <div className="w-full flex flex-col gap-5">
                 <div className="flex gap-2 items-center justify-between w-full mt-5">
                     <Search changeId={setFolderId} />
                     <CreateButtons render={setForceRender} folderId={folderId} />

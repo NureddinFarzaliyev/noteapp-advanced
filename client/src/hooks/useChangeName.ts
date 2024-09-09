@@ -29,5 +29,5 @@ export const useChangeName = () => {
         setIsLoading(false)
     }
 
-    return {changeName, isChangeNameLoading, setNewName}
+    return {changeName, isChangeNameLoading, newName, setNewName}
 }

@@ -10,7 +10,7 @@ function Search({changeId} : {changeId: React.Dispatch<React.SetStateAction<stri
     useEffect(() => {
         const timer = setTimeout(() => {
             search(input)
-        }, 1000);
+        }, 750);
 
         return () => {
             clearTimeout(timer);
@@ -19,9 +19,9 @@ function Search({changeId} : {changeId: React.Dispatch<React.SetStateAction<stri
 
     return (
         <div className="relative">
-            <input className="text-black rounded w-96 px-2" type="text" placeholder="Search for files and folders" 
+            <input className="text-black z-10 rounded w-44 md:w-96 px-2 h-8" type="text" placeholder="Search for files and folders" 
             value={input} onChange={(e) => {setInput(e.target.value)}} />
-            <div className="absolute top-0 right-0 text-black">{isSearching === true && <ReactLoading type="spin" />}</div>
+            <div className="absolute top-1 right-1 z-20 text-black">{isSearching === true && <ReactLoading color="black" type="spin" height={24} width={24} />}</div>
 
             <SearchResults changeId={changeId} results={results} />
         </div>
