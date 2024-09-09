@@ -59,7 +59,7 @@ function FolderView({changeId, isLoading, folderContent, setInfoData} : FolderVi
                 </div>
                 )}
 
-                <div className="mt-10">
+                <div className="mt-10 flex flex-wrap justify-center md:justify-start">
                 {folderContent.folders.map((folder:InfoDataType, index:number) => {
                     return <button
                     onClick={() => {setInfoData({...folder, type: 'folder'}); setIsChosen(folder._id)}} 

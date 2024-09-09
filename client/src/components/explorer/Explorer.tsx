@@ -39,7 +39,7 @@ function Explorer() {
                 setInfoData={setInfoData} />}
             </div>
             <div>
-                <InfoView data={infoData} setSelfData={setInfoData} render={setForceRender} />
+                <InfoView data={infoData} render={setForceRender} />
             </div>
         </div>
     )

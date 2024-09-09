@@ -6,6 +6,7 @@ import { useAuth } from "./hooks/useAuth"
 import { useEffect  } from "react"
 import { isLoggedInContext } from "./contexts/isLoggedInContext"
 import PreferencesContextProvider from "./contexts/PreferencesContext"
+import './utils/anim.css'
 
 function App() {
   const {auth, isLoggedIn, isLoading} = useAuth()

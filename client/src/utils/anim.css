@@ -1,0 +1,12 @@
+.openPopup{
+    animation: openPopup .3s forwards;
+}
+
+
+@keyframes openPopup {
+    0%{
+        scale: 10%;
+    }100%{
+        scale: 100%;
+    }
+}
