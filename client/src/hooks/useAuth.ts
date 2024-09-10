@@ -18,7 +18,7 @@ export const useAuth = () => {
     
                 if(result.success){
                     setIsLoggedIn(result.success)
-                    successToast(result.message)
+                    // successToast(result.message)
                 }else if(result.error){
                     console.log(result.error)
                 }
