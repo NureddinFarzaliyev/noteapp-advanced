@@ -10,7 +10,7 @@ function ExplorerPopover({children, icon} : {children:any,icon:string}) {
                     <img src={icon} />
                 </ExplorerButton>
             </PopoverButton>
-            <PopoverPanel anchor="bottom" className="flex flex-col bg-gray-900 shadow-2xl rounded-md p-3 absolute mt-1" >
+            <PopoverPanel anchor="bottom" className="flex flex-col bg-gray-900 border-b-4 border-[var(--accent-color)] shadow-xl rounded-md p-3 absolute mt-1" >
                 {children}
             </PopoverPanel>
         </Popover>

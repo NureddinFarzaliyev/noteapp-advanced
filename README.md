@@ -1,5 +1,4 @@
 # Advanced File-Explorer-Like Notetaking App (MERN Stack)
-**🚧 FRONTEND IN-PROGRESS**
 
 This is a note-taking app. This app is designed like a file explorer where you can create folders & notes and browse them.
 
@@ -27,4 +26,3 @@ This is a note-taking app. This app is designed like a file explorer where you c
 - Custom context menu
 - Drag & Drop to change structure
 - Caching requests
-
