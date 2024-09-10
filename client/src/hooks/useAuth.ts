@@ -1,6 +1,5 @@
 import { useState } from "react"
 import { sendPostRequest } from "../utils/sendPostRequest"
-import { successToast } from "../utils/toasts"
 
 
 export const useAuth = () => {
