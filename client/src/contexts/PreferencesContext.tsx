@@ -20,6 +20,14 @@ function PreferencesContextProvider({children}: any) {
         fetchPreferences().then(data => setPreferences(data))
     }, [])
 
+    useEffect(() => {
+        if (preferences) {
+            document.documentElement.style.setProperty('--bg-color', preferences.backgroundColor || '#000000');
+            document.documentElement.style.setProperty('--accent-color', preferences.accentColor || '#3498db');
+            document.documentElement.style.setProperty('--text-color', preferences.textColor || '#ffffff');
+        }
+    }, [preferences]);
+
     return (
         <PreferencesContext.Provider value={preferences}>
             {children}

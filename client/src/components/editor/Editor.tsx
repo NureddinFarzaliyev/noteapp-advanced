@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 import { useGetNoteData } from "../../hooks/useGetNoteData.ts"
 import { useContext, useEffect, useState } from "react"
 import Markdown from "./Markdown.tsx"
@@ -44,7 +44,8 @@ function Editor() {
                         </>
                     )}
                 </div>
-                <div className="z-[99999]">
+                <div className="z-[99999] mt-2 flex gap-3">
+                    <Link to={'/'} className="opacity-20 hover:opacity-100 transition-all">Go Back</Link>
                     <DeleteComponent id={id?id:''} type="note" />
                     {/* <NoteDetails noteData={noteData} /> */}
                 </div>

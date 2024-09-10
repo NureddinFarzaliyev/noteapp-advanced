@@ -6,7 +6,7 @@ interface MarkdownProps {
 
 function Markdown({noteContent}: MarkdownProps) {
     return (
-        <div className='prose   p-4' >
+        <div className='prose p-4' >
             <ReactMarkdown>
                 {noteContent}
             </ReactMarkdown>
