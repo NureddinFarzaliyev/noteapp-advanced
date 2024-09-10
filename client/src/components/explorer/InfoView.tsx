@@ -20,7 +20,7 @@ interface InfoProps {
 function InfoView({data, render}:InfoProps) {
     if(data){
         return (
-            <div className="bg-gray-900 p-5 rounded-lg shadow-xl w-[22vw] h-[90vh] m-2 hidden md:block">
+            <div className="bg-gray-900 text-white p-5 rounded-lg shadow-xl w-[22vw] h-[90vh] m-2 hidden md:block">
                 <div className="flex flex-col items-center justify-center gap-4">
                     {data.type === 'folder' ? <CustomFolderSvg width={80} height={74} /> : <img src={noteIcon} alt="note"  />}
                     <div className="text-2xl">{data.name}</div>
@@ -39,7 +39,7 @@ function InfoView({data, render}:InfoProps) {
         )
     }else{
         return(
-        <div className="bg-gray-900 p-5 rounded-lg shadow-xl w-[22vw] h-[90vh] m-2 hidden md:flex items-center justify-center flex-col gap-20">
+        <div className="bg-gray-900 text-white p-5 rounded-lg shadow-xl w-[22vw] h-[90vh] m-2 hidden md:flex items-center justify-center flex-col gap-20">
             <p className="w-[70%] text-center opacity-50 text-sm">Click on an item to delete or change their name and see more information about them.</p>
             <SettingsButton/>
         </div>

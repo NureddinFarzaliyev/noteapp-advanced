@@ -29,7 +29,7 @@ function Editor() {
 
     if(isLoading !== true){
         return (
-            <div className="min-h-dvh py-24 px-2 sm:px-24 md:px-72 flex flex-col gap-2"
+            <div className="min-h-dvh py-12 px-2 sm:px-24 md:px-72 flex flex-col gap-2"
             style={{backgroundColor: preferences?.backgroundColor, color: preferences?.textColor}}>
                 <div className="flex items-end gap-2">
                     {isRenameOpen ? (
