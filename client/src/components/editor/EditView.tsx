@@ -1,6 +1,7 @@
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { useUpdateNote } from "../../hooks/useUpdateNote";
 import { NoteDataType } from "../../hooks/useGetNoteData";
+import { PreferencesContext } from "../../contexts/PreferencesContext";
 
 interface EditView {
     noteContent: string;
@@ -11,6 +12,7 @@ interface EditView {
 
 function EditView({noteContent, noteData, setNoteContent, id} : EditView) {
     const {updateNoteContent, isSaving} = useUpdateNote()
+    const preferences = useContext(PreferencesContext)
 
     const saveNote = () => {
         if(!isSaving || noteData?.content !== noteContent){
@@ -31,11 +33,17 @@ function EditView({noteContent, noteData, setNoteContent, id} : EditView) {
     }, [noteData, noteContent, isSaving, id])
 
     return (
-        <div>
-            <textarea value={noteContent} onChange={(e) => setNoteContent(e.target.value)}></textarea>
-            <button disabled={isSaving || noteData?.content === noteContent} 
-            onClick={() => {saveNote()}}>SAVE</button>
-            {noteData?.content !== noteContent && <p>You have unsaved changes! Leaving the page you'll lose your changes.</p>}
+        <div className="relative">
+        <textarea spellCheck={false}
+            className="w-full min-h-[60vh] resize-y"
+            style={{background: 'none', color: preferences?.textColor, fontSize: preferences?.textSize}}
+            value={noteContent} 
+            onChange={(e) => setNoteContent(e.target.value)}></textarea>
+            <button className="absolute right-0 px-5 py-1 rounded hover:scale-105 disabled:hover:scale-100 transition-all disabled:opacity-10" 
+            style={{backgroundColor: preferences?.accentColor}}
+            disabled={isSaving || noteData?.content === noteContent} 
+            onClick={() => {saveNote()}}>Save</button>
+            {/* {noteData?.content !== noteContent && <p className="absolute w-44 text-right rounded shadow-lg py-1 top-10 right-0">You have unsaved changes!</p>} */}
         </div>
     )
 }

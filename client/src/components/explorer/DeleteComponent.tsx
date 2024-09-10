@@ -22,7 +22,7 @@ function DeleteComponent({id, type, forceRender} : DeleteProps) {
     return (
         <div>  
             <button className="opacity-20 hover:opacity-100 transition-all w-full text-left" onClick={() => {setIsPopupOpen(p => !p)}}>Delete</button>
-            <div className={isPopupOpen ? 'block' : 'hidden' }>
+            <div className={`${isPopupOpen ? 'block' : 'hidden'}`}>
                 <div onClick={() => {setIsPopupOpen(false)}} className="bg-[rgba(0,0,0,.75)] shadow-xl h-dvh w-dvw absolute top-0 left-0 flex items-center justify-center">
                     <div className={`bg-gray-900 px-3 py-5 rounded ${isPopupOpen && 'openPopup'}`}>
                         <div className="mb-5">{`Are you sure you want to delete this ${type}?`}</div>
