@@ -5,8 +5,9 @@ function Logout() {
 
     return (
         <div>
-            <button onClick={(e) => {logout(e)}}>logout</button>
-            <p>{isLoading === true && 'loading' }</p>
+            <button className={`py-1 w-28 my-2 flex justify-center items-center opacity-80 hover:opacity-100 transition-all rounded bg-[var(--accent-color)]`} onClick={(e) => {logout(e)}}>
+                {isLoading === true ? 'Loading' : 'Log out'}
+            </button>
         </div>
     )
 }

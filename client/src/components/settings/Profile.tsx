@@ -7,8 +7,7 @@ interface ProfileProps {
 function Profile({ username }:ProfileProps) {
     return (
         <div>
-            <p>user profile</p>
-            <p>{username}</p>
+            <p>Current Username: <b>{username}</b></p>
             <Logout />
         </div>
     )

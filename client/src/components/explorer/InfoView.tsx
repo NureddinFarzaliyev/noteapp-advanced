@@ -2,6 +2,7 @@ import NameComponent from "./NameComponent";
 import DeleteComponent from "./DeleteComponent";
 import noteIcon from '../../assets/file.svg'
 import CustomFolderSvg from "./CustomFolderSvg";
+import SettingsButton from "./SettingsButton";
 
 export interface InfoDataType {
     type: 'folder' | 'note';
@@ -30,13 +31,17 @@ function InfoView({data, render}:InfoProps) {
                     <NameComponent type={data.type} id={data._id} forceRender={render} />
                 </div>
                 <div className="mt-5"></div>
-            <DeleteComponent type={data.type} id={data._id} forceRender={render} />
+                <DeleteComponent type={data.type} id={data._id} forceRender={render} />
+                <div className="mt-5">
+                    <SettingsButton/>
+                </div>
             </div>
         )
     }else{
         return(
-        <div className="bg-gray-900 p-5 rounded-lg shadow-xl w-[22vw] h-[90vh] m-2 hidden md:flex items-center justify-center">
+        <div className="bg-gray-900 p-5 rounded-lg shadow-xl w-[22vw] h-[90vh] m-2 hidden md:flex items-center justify-center flex-col gap-20">
             <p className="w-[70%] text-center opacity-50 text-sm">Click on an item to delete or change their name and see more information about them.</p>
+            <SettingsButton/>
         </div>
         )
     }

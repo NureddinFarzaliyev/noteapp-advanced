@@ -1,14 +1,15 @@
 import { CustomizeProps } from "./Customize"
 import { Range } from "react-range"
 
-function TextSizeRange({preferences, setPreferences} : CustomizeProps) {
+function TextSizeRange({preferences, setPreferences, isDisabled} : CustomizeProps) {
     return (
-        <>
+        <div className={`mt-10 ${!isDisabled && 'opacity-70 hover:opacity-100'} ${isDisabled && 'opacity-20'}`}>
         <Range
+          disabled={isDisabled}
           label="Select your value"
           step={2}
           min={8}
-          max={64}
+          max={60}
           values={[preferences?.textSize !== undefined ? preferences?.textSize : 8]}
           onChange={(values) => setPreferences({
             ...preferences,
@@ -18,6 +19,7 @@ function TextSizeRange({preferences, setPreferences} : CustomizeProps) {
             <div
               {...props}
               style={{
+                borderRadius: '3px',
                 ...props.style,
                 height: "6px",
                 width: "100%",
@@ -42,8 +44,8 @@ function TextSizeRange({preferences, setPreferences} : CustomizeProps) {
           )}
         />
         <span>{preferences.textSize}</span>
-        <p>Example text for text size</p>
-        </>
+        <p style={{fontSize: preferences.textSize}}>Example text for text size</p>
+        </div>
     )
 }
 

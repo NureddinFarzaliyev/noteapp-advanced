@@ -11,19 +11,17 @@ export interface CustomizeProps {
 
 function Customize({isDisabled, setPreferences, preferences} : CustomizeProps) {
 
-    
     return (
-        <>
-            <p>DISABLED: {String(isDisabled)}</p>
-            <ColorInput preferences={preferences} setPreferences={setPreferences} 
+        <div>
+            <ColorInput preferences={preferences} setPreferences={setPreferences} isDisabled={isDisabled} 
             inputName="Background Color" inputFieldName="backgroundColor" />
-            <ColorInput preferences={preferences} setPreferences={setPreferences} 
-            inputName="Accent Color" inputFieldName="accentColor" />
-            <ColorInput preferences={preferences} setPreferences={setPreferences} 
+            <ColorInput preferences={preferences} setPreferences={setPreferences} isDisabled={isDisabled} 
+            inputName="Accent Color" inputFieldName="accentColor"/>
+            <ColorInput preferences={preferences} setPreferences={setPreferences} isDisabled={isDisabled} 
             inputName="Text Color" inputFieldName="textColor" />
 
-            <TextSizeRange preferences={preferences} setPreferences={setPreferences} />
-        </>
+            <TextSizeRange preferences={preferences} setPreferences={setPreferences} isDisabled={isDisabled} />
+        </div>
     )
 }
 

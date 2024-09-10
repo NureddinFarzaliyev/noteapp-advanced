@@ -6,12 +6,11 @@ function ChangeUsername() {
     const {changeDataFn, isLoading} = useChangeUserData()
 
     return (
-        <div>
-            <h1>Change Username</h1>
-            <input type="text" name='newUsername' placeholder="New Username" onChange={(e) => {handleChange(e)}} />
-            <input type="text" name='password' placeholder="Password" onChange={(e) => {handleChange(e)}} />
-            <button onClick={() => {changeDataFn(changeData, 'username')}}>Change Username</button>
-            {isLoading === true && <p>Loading</p>}
+        <div className="flex flex-col items-start gap-3 mt-8">
+            <h1 className="text-2xl">Change Username</h1>
+            <input className="bg-transparent border-b-2 border-b-[var(--accent-color)] py-1" type="text" name='newUsername' placeholder="Type New Username" onChange={(e) => {handleChange(e)}} />
+            <input className="bg-transparent border-b-2 border-b-[var(--accent-color)] py-1" type="text" name='password' placeholder="Enter your Password" onChange={(e) => {handleChange(e)}} />
+            <button disabled={isLoading} className="bg-[var(--accent-color)] w-44 py-1 rounded opacity-80 hover:opacity-100 transition-all mt-2" onClick={() => {changeDataFn(changeData, 'username')}}>{isLoading === true ? "Loading..." : 'Change Username'}</button>
         </div>
     )
 }

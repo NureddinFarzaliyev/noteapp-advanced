@@ -5,11 +5,11 @@ interface ColorInputProps extends CustomizeProps {
     inputFieldName: string;
 }
 
-function ColorInput({preferences, setPreferences, inputName, inputFieldName}: ColorInputProps) {
+function ColorInput({preferences, setPreferences, inputName, inputFieldName, isDisabled}: ColorInputProps) {
     return (
-        <label>
-            {inputName}
-            <input type="color" name={inputFieldName} value={preferences[inputFieldName] || ''} onChange={(e) => setPreferences({
+        <label className={`flex my-2 ${isDisabled && 'opacity-20'} ${!isDisabled && "opacity-70 hover:opacity-100"} transition-all cursor-pointer`}>
+            <h1 className='text-xl w-52'>{inputName}</h1>
+            <input disabled={isDisabled} className='rounded-full overflow-hidden h-10 w-10' type="color" name={inputFieldName} value={preferences[inputFieldName] || ''} onChange={(e) => setPreferences({
                 ...preferences,
                 [e.target.name]: e.target.value 
             })} />

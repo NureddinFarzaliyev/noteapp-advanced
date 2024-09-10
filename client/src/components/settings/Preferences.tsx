@@ -55,23 +55,21 @@ function Preferences() {
     }
 
     return (
-        <div className='  p-2'>
-            <h1>Preferences</h1>
+        <div className='p-2'>
+            <p className="w-[80%]">Use options below to customize the app. Select <b>Dark</b> or <b>Light</b> theme or choose <b>Custom</b> to create your own Theme.</p>
 
-            <select name="theme" id="theme" onChange={(e) => {setTheme(e.target.value as ThemeTypes)}}>
+            <select className="bg-[var(--accent-color)] px-5 py-1 rounded w-min mt-5 mb-10" name="theme" id="theme" onChange={(e) => {setTheme(e.target.value as ThemeTypes)}}>
                 <option value="dark">Dark</option>
                 <option value="light">Light</option>
                 <option value="custom">Custom</option>
             </select>
 
-            <i>Choose "Custom" to customize further.</i> <br />
-
             <Customize isDisabled={theme !== 'custom'} setPreferences={setPreferences} preferences={preferences} />
 
-            <button onClick={() => {saveHandler()}}>{isLoading == true ? 'Please wait...' : 'Save Changes'}</button>
-            <button onClick={() => {location.reload()}} disabled={!isChanged}>Apply</button>
-
-            {/* <pre>{JSON.stringify(preferencesContext, null, 2)}</pre> */}
+            <div className="mt-5 absolute bottom-12">
+                <button className={`bg-[var(--accent-color)] mr-1 py-1 px-5 rounded opacity-70 hover:opacity-100 transition-all`} onClick={() => {saveHandler()}}>{isLoading == true ? 'Please wait...' : 'Save Changes'}</button>
+                <button className={`${isChanged && 'bg-[var(--accent-color)]'} py-1 px-5 rounded opacity-70 disabled:hover:opacity-70 hover:opacity-100 transition-all`} onClick={() => {location.reload()}} disabled={!isChanged}>Apply Changes</button>
+            </div>
         </div>
     )
 }
