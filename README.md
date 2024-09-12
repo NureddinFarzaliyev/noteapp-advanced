@@ -2,6 +2,9 @@
 
 This is a note-taking app. This app is designed like a file explorer where you can create folders & notes and browse them.
 
+**Check out this video:** </br> </br>
+[![YouTube Link](https://img.youtube.com/vi/kZohKAoD9ag/0.jpg)](https://www.youtube.com/watch?v=kZohKAoD9ag)
+
 ### You can: 
 - Create Notes & Folders
 - Browse Notes & Folders

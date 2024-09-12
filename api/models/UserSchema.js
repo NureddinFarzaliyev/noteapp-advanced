@@ -9,22 +9,22 @@ const preferencesSchema = new mongoose.Schema({
     backgroundColor: {
         type: String,
         required: false,
-        default: undefined
+        default: "#000000"
     },
     accentColor: {
         type: String,
         required: false,
-        default: undefined
+        default: "#3498DB"
     },
     textColor: {
         type: String,
         required: false,
-        default: undefined
+        default: '#ffffff'
     },
     textSize: {
         type: Number,
         required: false,
-        default: undefined
+        default: 16
     }
 })
 

@@ -12,8 +12,7 @@ function Signup() {
                 <input className="bg-transparent border-b-2 border-b-cyan-900 focus:border-b-cyan-400 transition-all py-1" type="text" name="username" placeholder="Username" onChange={(e) => handleChange(e)} />
                 <input className="bg-transparent border-b-2 border-b-cyan-900 focus:border-b-cyan-400 transition-all py-1" type="password" name="password" placeholder="Password" onChange={(e) => handleChange(e)} />
                 <input className="bg-transparent border-b-2 border-b-cyan-900 focus:border-b-cyan-400 transition-all py-1" type="password" name="confirm" placeholder="Confirm Password" onChange={(e) => handleChange(e)} />
-                <button onClick={(e) => {signup(e)}} className="bg-cyan-700 px-10 py-1 rounded shadow-md hover:bg-cyan-900 transition-all w-40">Register</button>
-                <p>{isLoading === true ? 'loading' : null}</p>
+                <button onClick={(e) => {signup(e)}} className="bg-cyan-700 px-10 py-1 rounded shadow-md hover:bg-cyan-900 transition-all w-40">{isLoading === true ? 'Loading...' : 'Sign Up'}</button>
             </form>
         </div>
     )
