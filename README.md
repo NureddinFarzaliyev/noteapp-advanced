@@ -29,6 +29,3 @@ This is a note-taking app. This app is designed like a file explorer where you c
 - Custom context menu
 - Drag & Drop to change structure
 - Caching requests
-
-test change to readme
-
